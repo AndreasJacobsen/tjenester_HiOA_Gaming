@@ -23,7 +23,7 @@
         <!-- Birthday picker made by abecoffman
          github repo: https://github.com/abecoffman/birthdaypicker -->
         <script type="text/javascript">
-            $(document).ready(function(){
+            $(document).ready(function () {
                 $("#picker2").birthdaypicker({
                     maxAge: 120,
                     dateFormat: "littleEndian",
@@ -32,7 +32,7 @@
             });
         </script>
     <div class="picker" id="picker2"></div>
-            <br>
+    <br>
     Payment: <br>
     <input type="radio" name="semester" value="Semester payment"> Semester member<br>
     <input type="radio" name="semester" value="Yearly payment"> Yearly member<br>
@@ -47,23 +47,33 @@
 
 
 <?php
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     echo "<br>lol!";
 
 
+    $servername = "localhost";
+    $username = "root"; //change user and password to a restricted user before production
+    $password = "";
+    $dbname = "hioa_gaming"; //change to production name
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-$servername = "localhost";
-$username = "root"; //change user and password to a restricted user before production
-$password = "";
-$dbname = "hioa_gaming"; //change to production name
-$conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    echo "<br>Connected successfully<br>";
+    $first_name = $_POST["FirstName"];
+    $last_name = $_POST["LastName"];
+    $gender = $_POST["gender"];
+    $gender_converter;
+    if(!is_null($gender == "male")) {
+        $gender_converter = "M";
+    }
+    else{
+        $gender_converter = "F";
+    }
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "<br>Connected successfully<br>";
-
-$sql = "INSERT INTO members (first_name, last_name, )";
+    $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
+        VALUES ";
 
 }
 ?>
