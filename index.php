@@ -13,7 +13,7 @@
     <title>HiOA Gaming members </title></head>
 
 
-<form action="" method="post">
+<form action="" method="get">
     First name: <input type="text" name="FirstName"><br><br>
     Last name: <input type="text" name="LastName"><br>
     <p> Stundet? <select required name="student">
@@ -47,7 +47,7 @@
 
 
 <?php
-if (isset($_POST['submit'])) {
+if (isset($_GET['submit'])) {
     echo "<br>lol!";
 
 
@@ -61,10 +61,10 @@ if (isset($_POST['submit'])) {
         die("Connection failed: " . $conn->connect_error);
     }
     echo "<br>Connected successfully<br>";
-    $first_name = $_POST["FirstName"];
-    $last_name = $_POST["LastName"];
-    $gender = $_POST["gender"];
-    $student = $_POST["student"];
+    $first_name = $_GET["FirstName"];
+    $last_name = $_GET["LastName"];
+    $gender = $_GET["gender"];
+    $student = $_GET["student"];
     $gender_converter;
     if(!is_null($gender == "male")) {
         $gender_converter = "M";
