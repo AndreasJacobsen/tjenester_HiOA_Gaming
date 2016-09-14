@@ -45,7 +45,7 @@
 <?php
 echo "<p>Hello world!</p>";
 $servername = "localhost";
-$username = "root";
+$username = "root"; //change user and password to a restricted user before production
 $password = "";
 
 $conn = new mysqli($servername, $username, $password);
