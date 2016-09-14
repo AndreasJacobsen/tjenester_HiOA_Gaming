@@ -41,15 +41,15 @@
     <input type="radio" name="gender" value="Woman"> Woman<br>
 
 
-    <input type="submit" value="submit" id="submit">
+    <input type="submit" value="submit" id="submit" name="submit">
 
 </form>
 
 
 <?php
 if(isset($_POST['submit'])) {
-    echo "lol!";
-}
+    echo "<br>lol!";
+
 
 
 $servername = "localhost";
@@ -61,10 +61,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully<br>";
+echo "<br>Connected successfully<br>";
 
-$sql = "INSERT INTO members (first_name, last_name, )"
+$sql = "INSERT INTO members (first_name, last_name, )";
 
+}
 ?>
 
 
