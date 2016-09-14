@@ -84,6 +84,7 @@ if (isset($_GET['submit'])) {
     }
 
     mysqli_close($conn);
+    $test;
 
 }
 ?>
