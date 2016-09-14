@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <body>
 <head>
     <meta charset="UTF-8">
-    <title>HiOA Gaming members </title></head>
     <meta name="keywords" content="HiOA Gaming membership registration page">
     <meta name="author" content="Andreas Jacobsen">
 
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+    <script src="birthdaypicker/bday-picker.min.js"></script>
+    <title>HiOA Gaming members </title></head>
+
+
+
 <form action="">
-    First name: <input type="text" name="FirstName"><br>
+    First name: <input type="text" name="FirstName"><br><br>
     Last name: <input type="text" name="LastName"><br>
+   <p> Stundet? <select required>
+        <option value="0">Student</option>
+        <option value="1">Ikke student</option>
+</select>
+       <!-- Birthday picker made by abecoffman
+        github repo: https://github.com/abecoffman/birthdaypicker -->
+       <script type="text/javascript">
+           $(document).ready(function(){
+               $("#picker1").birthdaypicker({});
+           });
+       </script>
+    <div class="picker" id="picker1"></div>
+
+    <div id="container">
+        <div id="examples">
+            <div class="picker" id="picker1"></div>
+
+       <br><br><br><br><br>
     <input type="submit" value="Submit">
+
 </form>
 
 
