@@ -16,7 +16,7 @@
 <form action="" method="post">
     First name: <input type="text" name="FirstName"><br><br>
     Last name: <input type="text" name="LastName"><br>
-    <p> Stundet? <select required>
+    <p> Stundet? <select required name="student">
             <option value="1">Student</option>
             <option value="0">Ikke student</option>
         </select>
@@ -64,6 +64,7 @@ if (isset($_POST['submit'])) {
     $first_name = $_POST["FirstName"];
     $last_name = $_POST["LastName"];
     $gender = $_POST["gender"];
+    $student = $_POST["student"];
     $gender_converter;
     if(!is_null($gender == "male")) {
         $gender_converter = "M";
@@ -71,9 +72,18 @@ if (isset($_POST['submit'])) {
     else{
         $gender_converter = "F";
     }
+    $date = date('m/d/Y');
 
     $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
-        VALUES ";
+        VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Membership data succesfully added!";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
 
 }
 ?>
