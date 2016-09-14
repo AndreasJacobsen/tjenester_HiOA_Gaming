@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 <body>
 <head>
     <meta charset="UTF-8">
@@ -22,29 +22,22 @@
         </select>
         <!-- Birthday picker made by abecoffman
          github repo: https://github.com/abecoffman/birthdaypicker -->
-        <!--<script type="text/javascript">
-            $(document).ready(function(){
-                $("#picker1").birthdaypicker({});
-            });
-        </script>-->
         <script type="text/javascript">
             $(document).ready(function(){
                 $("#picker2").birthdaypicker({
                     maxAge: 120,
                     dateFormat: "littleEndian",
                     monthFormat: "long",
-
                 });
             });
         </script>
     <div class="picker" id="picker2"></div>
+            <br>
+    Payment: <br>
+    <input type="radio" name="semester" value="Semester payment"> Semester member<br>
+    <input type="radio" name="semester" value="Yearly payment"> Yearly member<br>
 
-    <div id="container">
-        <div id="examples">
-            <div class="picker" id="picker1"></div>
-
-            <br><br><br><br><br>
-            <input type="submit" value="Submit">
+    <input type="submit" value="Submit">
 
 </form>
 
