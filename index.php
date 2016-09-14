@@ -10,22 +10,24 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
     <script src="birthdaypicker/bday-picker.min.js"></script>
-    <title>HiOA Gaming members </title></head>
+    <title>HiOA Gaming members </title>
+    <link rel="stylesheet" type="text/css" href="style.css"></head>
 
 <img src="Pic/logo.png" alt="Logo for HiOA Gaming" align="middle" height="200" width="400" >
 <h1>Registration for membership</h1>
 
-<div class="table">
+
     <form action="" method="get">
-    <div>First name: <input type="text" name="FirstName"><br><br></div>
-    Last name: <input type="text" name="LastName"><br>
-    <p> Stundet? <select required name="student">
+    <br><b>First name:</b> <input type="text" name="FirstName" required></br>
+    <br><b>Last name:</b> <input type="text" name="LastName" required></br>
+    <br> <b>Stundet?</b> <br><select required name="student"></br>
             <option value="1">Student</option>
             <option value="0">Ikke student</option>
         </select>
         <!-- Birthday picker made by abecoffman
          github repo: https://github.com/abecoffman/birthdaypicker -->
-        <script type="text/javascript">
+        <!-- TODO: Fikse stylen på denne shiten! -->
+        <br><script type="text/javascript">
             $(document).ready(function () {
                 $("#picker2").birthdaypicker({
                     maxAge: 120,
@@ -33,26 +35,25 @@
                     monthFormat: "long",
                 });
             });
-        </script>
-    <div class="picker" id="picker2"></div>
+        </script></br>
+    <br><b>Birht date:</b><div class="picker" id="picker2"></div>
     <br>
-    Payment: <br>
+    <b>Payment:</b> <br>
     <input type="radio" name="semester" value="Semester payment"> Semester member<br>
     <input type="radio" name="semester" value="Yearly payment"> Yearly member<br>
-    Gender: <br>
+    <br><b>Gender:</b> <br>
     <input type="radio" name="gender" value="Man"> Man<br>
     <input type="radio" name="gender" value="Woman"> Woman<br>
 
 
-    <input type="submit" value="submit" id="submit" name="submit">
+    <br><input type="submit" value="Submit" id="submit" name="submit" class="submit">
 
 </form>
 
 
 <?php
-echo "PHP Kjører!" ; 
+
 if (isset($_GET['submit'])) {
-    echo "<br>lol!";
 
 
     $servername = "localhost";
