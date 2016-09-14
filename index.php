@@ -77,7 +77,9 @@ if (isset($_GET['submit'])) {
         $gender_converter = "F";
     }
     $date = date('m/d/Y');
-
+    /* TODO: Legg inn faktiske datoer fra bursdag, */
+    /* TODO: Legg til inndata for resten av databasen */
+    /* TODO: Regulære utrykk som verifeserer både på serverside og på klientside. Ikke fjern denne TODO-en før dette er gjort  */
     $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
         VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
 
@@ -88,7 +90,7 @@ if (isset($_GET['submit'])) {
     }
 
     mysqli_close($conn);
-    $test;
+
 
 }
 ?>
