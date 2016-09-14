@@ -13,33 +13,40 @@
     <title>HiOA Gaming members </title></head>
 
 
-
 <form action="">
     First name: <input type="text" name="FirstName"><br><br>
     Last name: <input type="text" name="LastName"><br>
-   <p> Stundet? <select required>
-        <option value="0">Student</option>
-        <option value="1">Ikke student</option>
-</select>
-       <!-- Birthday picker made by abecoffman
-        github repo: https://github.com/abecoffman/birthdaypicker -->
-       <script type="text/javascript">
-           $(document).ready(function(){
-               $("#picker1").birthdaypicker({});
-           });
-       </script>
-    <div class="picker" id="picker1"></div>
+    <p> Stundet? <select required>
+            <option value="1">Student</option>
+            <option value="0">Ikke student</option>
+        </select>
+        <!-- Birthday picker made by abecoffman
+         github repo: https://github.com/abecoffman/birthdaypicker -->
+        <!--<script type="text/javascript">
+            $(document).ready(function(){
+                $("#picker1").birthdaypicker({});
+            });
+        </script>-->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#picker2").birthdaypicker({
+                    maxAge: 120,
+                    dateFormat: "littleEndian",
+                    monthFormat: "long",
+
+                });
+            });
+        </script>
+    <div class="picker" id="picker2"></div>
 
     <div id="container">
         <div id="examples">
             <div class="picker" id="picker1"></div>
 
-       <br><br><br><br><br>
-    <input type="submit" value="Submit">
+            <br><br><br><br><br>
+            <input type="submit" value="Submit">
 
 </form>
-
-
 
 
 <?php
