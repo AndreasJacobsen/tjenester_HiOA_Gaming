@@ -17,8 +17,7 @@
 
 <div class="table">
     <form action="" method="get">
-<form action="" method="get">
-    First name: <input type="text" name="FirstName"><br><br>
+    <div>First name: <input type="text" name="FirstName"><br><br></div>
     Last name: <input type="text" name="LastName"><br>
     <p> Stundet? <select required name="student">
             <option value="1">Student</option>
