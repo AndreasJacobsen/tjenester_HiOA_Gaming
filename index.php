@@ -13,7 +13,7 @@
     <title>HiOA Gaming members </title></head>
 
 
-<form action="">
+<form action="" method="post">
     First name: <input type="text" name="FirstName"><br><br>
     Last name: <input type="text" name="LastName"><br>
     <p> Stundet? <select required>
@@ -36,26 +36,34 @@
     Payment: <br>
     <input type="radio" name="semester" value="Semester payment"> Semester member<br>
     <input type="radio" name="semester" value="Yearly payment"> Yearly member<br>
+    Gender: <br>
+    <input type="radio" name="gender" value="Man"> Man<br>
+    <input type="radio" name="gender" value="Woman"> Woman<br>
 
-    <input type="submit" value="Submit">
+
+    <input type="submit" value="submit" id="submit">
 
 </form>
 
 
 <?php
-echo "<p>Hello world!</p>";
+if(isset($_POST['submit'])) {
+    echo "lol!";
+}
+
+
 $servername = "localhost";
 $username = "root"; //change user and password to a restricted user before production
 $password = "";
-
-$conn = new mysqli($servername, $username, $password);
+$dbname = "hioa_gaming"; //change to production name
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully<br>";
-$sql = "SELECT member_no, birth_date, first_name FROM hioa_gaming.members;";
 
+$sql = "INSERT INTO members (first_name, last_name, )"
 
 ?>
 
