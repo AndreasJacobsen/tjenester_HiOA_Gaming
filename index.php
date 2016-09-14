@@ -12,7 +12,11 @@
     <script src="birthdaypicker/bday-picker.min.js"></script>
     <title>HiOA Gaming members </title></head>
 
+<img src="Pic/logo.png" alt="Logo for HiOA Gaming" align="middle" height="200" width="400" >
+<h1>Registration for membership</h1>
 
+<div class="table">
+    <form action="" method="get">
 <form action="" method="get">
     First name: <input type="text" name="FirstName"><br><br>
     Last name: <input type="text" name="LastName"><br>
@@ -47,6 +51,7 @@
 
 
 <?php
+echo "PHP Kjører!" ; 
 if (isset($_GET['submit'])) {
     echo "<br>lol!";
 
@@ -78,7 +83,7 @@ if (isset($_GET['submit'])) {
         VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "Membership data succesfully added!";
+        echo "Membership data successfully added!";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
