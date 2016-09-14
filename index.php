@@ -82,8 +82,7 @@ if (isset($_GET['submit'])) {
     /* TODO: Legg til inndata for resten av databasen */
     /* TODO: Regulære utrykk som verifeserer både på serverside og på klientside. Ikke fjern denne TODO-en før dette er gjort  */
     $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
-        VALUES ('$first_name', '$last_name','$student', '$gender_converter', $date)";
-    $result = db_query('SELECT * FROM members');
+        VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
     if (mysqli_query($conn, $sql)) {
         echo "Membership data successfully added!";
     } else {
