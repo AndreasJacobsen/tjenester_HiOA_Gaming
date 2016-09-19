@@ -67,7 +67,7 @@
 
 
         /*TODO Alle blir satt som mann */
-        /*TODO regulære utrykk både server og klientside*/
+        /*TODO regulære utrykk både server og klientside. Serverside enkel regex laget, MÅ TESTES*/
         /*TODO alle blir satt som yearly medlem*/
         /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor å printe direkte så navnene ikke fortsetter å stå? */
         $servername = "localhost";
@@ -80,14 +80,14 @@
             die("Connection failed: " . $conn->connect_error);
         }
         echo "<br>Connected successfully<br>";
-        //Simple functions to remove special characters, anti-hacking.
 
+
+        //Simple functions to remove special characters, anti-hacking.
         function test_input($data)
         {
             $data = trim($data);
             //vi kan kanskje fjerne htmlspeciachars da preg_replace tar seg av det+
-            //preg match fjerner mellomrom og, data ser rar ut da.
-            return preg_replace('/[^A-Za-z0-9\-]/', '', $data);
+            return preg_replace('/[^A-Za-z0-9\- ]/', '', $data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
         }
