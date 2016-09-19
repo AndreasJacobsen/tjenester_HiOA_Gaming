@@ -48,8 +48,8 @@
         <div class="picker" id="picker2"></div>
         <br>
         <br>Payment: <br>
-        <input type="radio" name="semester" value="Semester payment" title="SemesterMember"> Semester member<br>
-        <input type="radio" name="semester" value="Yearly payment" title="YearlyMember"> Yearly member<br>
+        <input type="radio" name="payment" value="S" title="SemesterMember"> Semester member<br>
+        <input type="radio" name="payment" value="Y" title="YearlyMember"> Yearly member<br>
         <br>Gender: <br>
         <input type="radio" name="gender" value="Man" title="Man"> Man<br>
         <input type="radio" name="gender" value="Woman" title="Woman"> Woman<br>
@@ -65,9 +65,11 @@
     if (isset($_GET['submit'])) {
         echo "<br>lol!";
 
+
         /*TODO Alle blir satt som mann */
         /*TODO regulære utrykk både server og klientside*/
         /*TODO alle blir satt som yearly medlem*/
+        /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor å printe direkte så navnene ikke fortsetter å stå? */
         $servername = "localhost";
         $username = "root"; //change user and password to a restricted user before production
         $password = "";
@@ -78,17 +80,37 @@
             die("Connection failed: " . $conn->connect_error);
         }
         echo "<br>Connected successfully<br>";
-        $first_name = $_GET["FirstName"];
-        $last_name = $_GET["LastName"];
-        $gender = $_GET["gender"];
-        $student = $_GET["student"];
+        //Simple functions to remove special characters, anti-hacking.
+
+        function test_input($data)
+        {
+            $data = trim($data);
+            //vi kan kanskje fjerne htmlspeciachars da preg_replace tar seg av det+
+            //preg match fjerner mellomrom og, data ser rar ut da.
+            return preg_replace('/[^A-Za-z0-9\-]/', '', $data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+        }
+
+        $first_name = test_input($_GET["FirstName"]);
+        $last_name = test_input($_GET["LastName"]);
+        $gender = test_input($_GET["gender"]);
+        $student = test_input($_GET["student"]);
         $gender_converter;
-        if (!is_null($gender == "male")) {
-            $gender_converter = "M";
+        $payment;
+        if (empty($_POST['payment'])) {
+            echo "You need to set the payment option";
         } else {
-            $gender_converter = "F";
+            $payment = test_input($_GET["gender"]);
+        }
+
+        if (!is_null($gender == "male")) {
+            $gender_converter = test_input("M");
+        } else {
+            $gender_converter = test_input("F");
         }
         $date = date('m/d/Y');
+
 
 
         $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
@@ -96,8 +118,8 @@
 
         if (mysqli_query($conn, $sql)) {
             echo "New member sucesfully added! <br> 
-Member name:" . $first_name . " " . $last_name . "<br>";
-} else {
+            Member name:" . $first_name . " " . $last_name . "<br>";
+        } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
