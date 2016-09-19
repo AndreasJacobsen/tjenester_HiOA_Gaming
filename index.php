@@ -12,6 +12,7 @@
     <script src="birthdaypicker/bday-picker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>HiOA Gaming members </title></head>
+    <?php include 'functions.php' ?>
 <body background="Pic/background.png">
 <div class="dropdown">
     <button class="dropbtn">Member database</button>
@@ -27,9 +28,9 @@
 
 
     <form action="" method="get">
-        <div>First name: <input type="text" name="FirstName" title="FirstName" required><br><br></div>
-        Last name: <input type="text" name="LastName" title="LastName" required><br>
-        <p> Stundet? <select required name="student" title="Student">
+        <div>Given name: <input type="text" name="FirstName" title="FirstName" required><br><br></div>
+        Surname: <input type="text" name="LastName" title="LastName" required><br>
+        <p> SiO student? <select required name="student" title="Student">
                 <option value="1">Student</option>
                 <option value="0">Not student</option>
             </select>
@@ -69,6 +70,7 @@
         /*TODO Alle blir satt som mann */
         /*TODO regulære utrykk både server og klientside. Serverside enkel regex laget, MÅ TESTES*/
         /*TODO alle blir satt som yearly medlem*/
+        /*TODO selv om man ikke setter yearly, man/woman eller payment så vil koden kjøre og legges inn i MySQL, det skal ikke skje*/
         /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor å printe direkte så navnene ikke fortsetter å stå? */
         $servername = "localhost";
         $username = "root"; //change user and password to a restricted user before production
@@ -82,15 +84,7 @@
         echo "<br>Connected successfully<br>";
 
 
-        //Simple functions to remove special characters, anti-hacking.
-        function test_input($data)
-        {
-            $data = trim($data);
-            //vi kan kanskje fjerne htmlspeciachars da preg_replace tar seg av det+
-            return preg_replace('/[^A-Za-z0-9\- ]/', '', $data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-        }
+
 
         $first_name = test_input($_GET["FirstName"]);
         $last_name = test_input($_GET["LastName"]);
@@ -109,12 +103,15 @@
         } else {
             $gender_converter = test_input("F");
         }
-        $date = date('m/d/Y');
+        $date = (date('d-m-Y'));
+        $dateTested =  test_date($date);
 
+        // $date = (date('d-m-Y'));
+        echo  "<p> <font color=\"red\">Datoen er:</font> <br></p>" . $dateTested;
 
-
+    //skriv if-isset som sjekker om alle verdiene er satt
         $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
-        VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
+        VALUES ('$first_name', '$last_name','$student', '$gender_converter','$dateTested')";
 
         if (mysqli_query($conn, $sql)) {
             echo "New member sucesfully added! <br> 
