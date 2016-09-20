@@ -12,7 +12,7 @@
     <script src="birthdaypicker/bday-picker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>HiOA Gaming members </title></head>
-    <?php include 'functions.php' ?>
+<?php include 'functions.php' ?>
 
 <div class="dropdown">
     <button class="dropbtn">Member database</button>
@@ -29,7 +29,7 @@
 
     <form action="" method="get">
         <div>Given name: <input type="text" name="FirstName" title="FirstName" required><br><br></div>
-        Surname: <input type="text" name="LastName" title="LastName" required><br>
+        Surname: <input type="text" name="LastName" title="LastName"><br>
         <p> SiO student? <select required name="student" title="Student">
                 <option value="1">Student</option>
                 <option value="0">Not student</option>
@@ -57,61 +57,63 @@
 
 
         <br><input type="submit" value="submit" id="submit" class="submit" name="submit" title="submit">
-        </div>
-    </form>
+</div>
+</form>
 
 
-    <?php
-    echo "PHP Kjører!";
-    if (isset($_GET['submit'])) {
-        echo "<br>lol!";
+<?php
+echo "PHP Kjører!";
+if (isset($_GET['submit'])) {
+    echo "<br>lol!";
 
 
-        /*TODO Alle blir satt som mann */
-        /*TODO regulære utrykk både server og klientside. Serverside enkel regex laget, MÅ TESTES*/
-        /*TODO alle blir satt som yearly medlem*/
-        /*TODO selv om man ikke setter yearly, man/woman eller payment så vil koden kjøre og legges inn i MySQL, det skal ikke skje*/
-        /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor å printe direkte så navnene ikke fortsetter å stå? */
-        $servername = "localhost";
-        $username = "root"; //change user and password to a restricted user before production
-        $password = "";
-        $dbname = "hioa_gaming"; //change to production name
-        $conn = new mysqli($servername, $username, $password, $dbname);
+    /*TODO Alle blir satt som mann */
+    /*TODO regulære utrykk både server og klientside. Serverside enkel regex laget, MÅ TESTES*/
+    /*TODO alle blir satt som yearly medlem*/
+    /*TODO selv om man ikke setter yearly, man/woman eller payment så vil koden kjøre og legges inn i MySQL, det skal ikke skje*/
+    /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor å printe direkte så navnene ikke fortsetter å stå? */
+    $servername = "localhost";
+    $username = "root"; //change user and password to a restricted user before production
+    $password = "";
+    $dbname = "hioa_gaming"; //change to production name
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        echo "<br>Connected successfully<br>";
-
-
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    echo "<br>Connected successfully<br>";
 
 
-        $first_name = test_input($_GET["FirstName"]);
-        $last_name = test_input($_GET["LastName"]);
-        $gender = test_input($_GET["gender"]);
-        $student = test_input($_GET["student"]);
-        $gender_converter;
-        $payment;
-        if (empty($_POST['payment'])) {
-            echo "You need to set the payment option";
-        } else {
-            $payment = test_input($_GET["gender"]);
-        }
+    $x = 0;
 
-        if (!is_null($gender == "male")) {
-            $gender_converter = test_input("M");
-        } else {
-            $gender_converter = test_input("F");
-        }
-        $date = (date('d-m-Y'));
-        $dateTested =  test_date($date);
+    $first_name = test_input($_GET["FirstName"]);
+    $last_name = test_input($_GET["LastName"]);
+    $gender = test_input($_GET["gender"]);
+    $student = test_input($_GET["student"]);
+    $gender_converter;
+    $payment;
+    if (empty($_POST['payment'])) {
+        echo "You need to set the payment option";
+        $x + 1;
+    } else {
+        $payment = test_input($_GET["gender"]);
+    }
 
-        // $date = (date('d-m-Y'));
-        echo  "<p> <font color=\"red\">Datoen er:</font>". $dateTested .  "<br></p>";
+    if (!is_null($gender == "male")) {
+        $gender_converter = test_input("M");
+    } else {
+        $gender_converter = test_input("F");
+    }
 
+    $date = test_date((date('Y-m-d')));
     //skriv if-isset som sjekker om alle verdiene er satt
+
+    echo "<p>X Counter er </p>" . $xcounter;
+    error_test();
+
+    if (error_test() == null) {
         $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
-        VALUES ('$first_name', '$last_name','$student', '$gender_converter','$dateTested')";
+        VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
 
         if (mysqli_query($conn, $sql)) {
             echo "New member sucesfully added! <br> 
@@ -119,9 +121,12 @@
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
+    } else {
+        echo "Please fill inn all the fields!";
     }
+}
 
-    ?>
+?>
 
 
 </body>
