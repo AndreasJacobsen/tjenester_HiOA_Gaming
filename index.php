@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>HiOA Gaming members </title></head>
     <?php include 'functions.php' ?>
-<body background="Pic/background.png">
+
 <div class="dropdown">
     <button class="dropbtn">Member database</button>
     <div class="dropdown-content">
@@ -56,8 +56,8 @@
         <input type="radio" name="gender" value="Woman" title="Woman"> Woman<br>
 
 
-        <br><input type="submit" value="submit" id="submit" name="submit" title="submit">
-
+        <br><input type="submit" value="submit" id="submit" class="submit" name="submit" title="submit">
+        </div>
     </form>
 
 
