@@ -19,6 +19,14 @@ function error_test(){
     global $error;
     echo $error;
     return $error;
+    if($error != null ) {
+        return true;
+        echo "true";
+    }
+    else{
+        return false;
+        echo "false";
+    }
 }
 
 function test_date($data)

@@ -108,10 +108,9 @@ if (isset($_GET['submit'])) {
     $date = test_date((date('Y-m-d')));
     //skriv if-isset som sjekker om alle verdiene er satt
 
-    echo "<p>X Counter er </p>" . $xcounter;
     error_test();
 
-    if (error_test() === null) {
+    if (error_test() === true) {
         $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
         VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
 
