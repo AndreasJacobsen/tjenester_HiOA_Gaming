@@ -9,25 +9,8 @@ function test_input($data)
     return preg_replace('/[^A-Za-z0-9\. ]/', '', $data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    if($data == null){
-        $xcounter++;
-        global $error;
-        $error = "You have ".$xcounter. " emtpy fields";
-    }
 }
-function error_test(){
-    global $error;
-    echo $error;
-    return $error;
-    if($error != null ) {
-        return true;
-        echo "true";
-    }
-    else{
-        return false;
-        echo "false";
-    }
-}
+
 
 function test_date($data)
 {

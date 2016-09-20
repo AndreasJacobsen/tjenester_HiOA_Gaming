@@ -52,8 +52,8 @@
         <input type="radio" name="payment" value="S" title="SemesterMember"> Semester member<br>
         <input type="radio" name="payment" value="Y" title="YearlyMember"> Yearly member<br>
         <br>Gender: <br>
-        <input type="radio" name="gender" value="Man" title="Man"> Man<br>
-        <input type="radio" name="gender" value="Woman" title="Woman"> Woman<br>
+        <input type="radio" name="gender" value="M" title="Man"> Man<br>
+        <input type="radio" name="gender" value="F" title="Woman"> Woman<br>
 
 
         <br><input type="submit" value="submit" id="submit" class="submit" name="submit" title="submit">
@@ -87,32 +87,44 @@ if (isset($_GET['submit'])) {
     $x = 0;
 
     $first_name = test_input($_GET["FirstName"]);
+    if($first_name === ""){
+        $x++;
+        echo "FORNAVN ER INGENTING";
+    }
     $last_name = test_input($_GET["LastName"]);
+    if($last_name === ""){
+        $x++;
+        echo "ETTERNAVN ER INGENTING";
+        $testvariable = "KRISTIAN ER SÅ JÆVLIG HOMO";
+
+    }
     $gender = test_input($_GET["gender"]);
-    $student = test_input($_GET["student"]);
-    $gender_converter;
-    $payment;
-    if (empty($_POST['payment'])) {
-        echo "You need to set the payment option";
-        $x + 1;
-    } else {
-        $payment = test_input($_GET["gender"]);
+    if($gender === ""){
+        $x++;
+        echo "KJØNN ER IKKE VALGT";
     }
 
-    if (!is_null($gender == "male")) {
-        $gender_converter = test_input("M");
-    } else {
-        $gender_converter = test_input("F");
+    $student = test_input($_GET["student"]);
+    if($student === ""){
+        $x++;
+        echo "STUDENTSTATUS ER IKKE VALGT";
     }
+    $payment = test_input($_GET["payment"]);
+    if($payment === ""){
+        $x++;
+        echo "SELECT PAYMENT";
+    }
+
+
 
     $date = test_date((date('Y-m-d')));
     //skriv if-isset som sjekker om alle verdiene er satt
+    echo "<font size = \"20\" color =\"red\"><p> X er " . $x . "</p></font>";
 
-    error_test();
 
-    if (error_test() === true) {
-        $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
-        VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
+    if ($x === 0) {
+        $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date, member_type, status)
+        VALUES ('$first_name', '$last_name','$student', '$gender','$date', '$payment', 'member')";
 
         if (mysqli_query($conn, $sql)) {
             echo "New member sucesfully added! <br> 
