@@ -111,7 +111,7 @@ if (isset($_GET['submit'])) {
     echo "<p>X Counter er </p>" . $xcounter;
     error_test();
 
-    if (error_test() == null) {
+    if (error_test() === null) {
         $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
         VALUES ('$first_name', '$last_name','$student', '$gender_converter','$date')";
 
@@ -124,6 +124,7 @@ if (isset($_GET['submit'])) {
     } else {
         echo "Please fill inn all the fields!";
     }
+
 }
 
 ?>
