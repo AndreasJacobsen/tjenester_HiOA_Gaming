@@ -107,7 +107,7 @@
         $dateTested =  test_date($date);
 
         // $date = (date('d-m-Y'));
-        echo  "<p> <font color=\"red\">Datoen er:</font> <br></p>" . $dateTested;
+        echo  "<p> <font color=\"red\">Datoen er:</font>". $dateTested .  "<br></p>";
 
     //skriv if-isset som sjekker om alle verdiene er satt
         $sql = "INSERT INTO members (first_name, last_name, student, gender, join_date)
