@@ -31,12 +31,14 @@
                                 name="FirstName" title="FirstName" required><br><br></div>
         Surname: <input type="text" name="LastName" pattern="[A-Za-zÆØÅæøå'\-\. ]{0,50}"
                         oninvalid="setCustomValidity('Only letters A-Z a-z . and spaces, max 50 letters.')"
-                        title="LastName" required><br>
+                        title="LastName" required><br><br>
 
-      <!--  <p> SiO student? <select required name="student" title="Student">
-                <option value="1">Student</option>
-                <option value="0">Not student</option>
-            </select>-->
+        E-mail:   <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$z >
+
+        <!--  <p> SiO student? <select required name="student" title="Student">
+                  <option value="1">Student</option>
+                  <option value="0">Not student</option>
+              </select>-->
             <br>
         <p><br>Date of birth:</br> <input type="date" id="datepicker" name="bday" pattern="[(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))
 ]" max="2010-12-31 min=" 1942-01-01""
@@ -124,6 +126,14 @@ if (isset($_GET['submit'])) {
         echo '</script>';
     }
 
+    $email = $_GET['email'];
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo '<script type="text/javascript">';
+        echo 'alert("Please fill inn a valid email!")';
+        echo '</script>';
+        $emailErr = "Invalid email format";
+        $x++;
+    }
 
     $dateYearStart = date("Y");
     $dateFirst = $dateYearStart . "-01-01";
