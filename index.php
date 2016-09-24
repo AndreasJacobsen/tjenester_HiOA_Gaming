@@ -52,8 +52,8 @@
         <input type="radio" name="payment" value="S" title="SemesterMember"> Semester member<br>
         <input type="radio" name="payment" value="Y" title="YearlyMember"> Yearly member<br>
         <br>Payment method:<br>
-        <input type="radio" name="payGet" value="Vipps" title="Vipps"> Vipps<br>
-        <input type="radio" name="payGet" value="Cash" title="Cash"> Cash<br>
+        <input type="radio" name="payget" value="Vipps" title="YearlyMember"> Vipps<br>
+        <input type="radio" name="payget" value="Cash" title="SemesterMember"> Cash<br>
 
         <br>Biological gender: <br>
         <input type="radio" name="gender" value="M" title="Man"> Man<br>
@@ -173,10 +173,10 @@ if (isset($_GET['submit'])) {
         echo '</script>';
         $x++;
     }
-    $payGet = test_input(($_GET['payGet']));
+    $payGet = $_GET['payget'];
 
     if ($x === 0) {
-        $sql = "INSERT INTO members (first_name, last_name, birth_date, student, gender, join_date, member_type, status, end_date, bday, payget, email)
+        $sql = "INSERT INTO members (first_name, last_name, birth_date, student, gender, join_date, member_type, status, end_date, bday, payment, email)
         VALUES ('$first_name','$last_name','$bday','$student','$gender','$date', '$payment', 'member', '$end_date','$bday','$payGet','$email')";
 
         if (mysqli_query($conn, $sql)) {
