@@ -61,13 +61,13 @@
 
 <?php
 
-//
+
 header('Content-Type: text/html; charset=utf-8');
 if (isset($_GET['submit'])) {
     /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor � printe direkte s� navnene ikke fortsetter � st�? */
     $servername = "localhost";
     $username = "root"; //change user and password to a restricted user before production
-    $password = "illievski";
+    $password = "";
     $dbname = "hioa_gaming"; //change to production name
     $conn = new mysqli($servername, $username, $password, $dbname);
 

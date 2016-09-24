@@ -17,7 +17,7 @@ header('Content-Type: text/html; charset=utf-8');
 $sql = "SELECT * FROM hioa_gaming.members WHERE end_date > YEAR(CURDATE()); ";
 $servername = "localhost";
 $username = "root"; //change user and password to a restricted user before production
-$password = "illievski";
+$password = "";
 $dbname = "hioa_gaming"; //change to production name
 $conn = new mysqli($servername, $username, $password, $dbname);
 
