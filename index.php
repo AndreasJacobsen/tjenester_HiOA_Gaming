@@ -186,13 +186,11 @@ if (isset($_GET['submit'])) {
         } else {
             echo "<script type='text/javascript'>
            alert('Everything crashed. GJ BJ WP GG!')
-           location.reload();
            </script>";
         }
     } else {
         echo "<script type='text/javascript'>
        alert('Please fill inn all the fields!')
-       location.reload();
        </script>";
     }
 

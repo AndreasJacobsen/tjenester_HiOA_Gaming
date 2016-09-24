@@ -8,8 +8,8 @@
 <div class="dropdown">
     <button class="dropbtn">Member database</button>
     <div class="dropdown-content">
-        <a href="/medlemmer/">Add users</a>
-        <a href="/medlemmer/print.php">Member list</a>
+        <a href="/index.php">Add users</a>
+        <a href="/print.php">Member list</a>
     </div>
 </div>
 <?php
