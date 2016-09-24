@@ -34,7 +34,7 @@ if($result -> num_rows > 0) {
     echo '<tr><th>Member number</th><th>Given name</th><th>Surname</th><th>SiO Student</th><th>Gender</th><th>Email</th><th>Join Date</th><th>Member Type</th><th>Payment</th><th>Status</th><th>Membership End Date</th><th>Date of birth</th></tr>';
     while ($row = $result->fetch_assoc()) {
         echo '<tr><td>' . $row["member_no"] . '</td><td>' . $row["first_name"] . '</td><td>'. $row["last_name"] . '</td><td>'. $row["student"] . '</td><td>' . $row["gender"]
-            . '</td><td>' . $row["email"]. '</td><td>' . $row["join_date"] . '</td><td>' . $row["member_type"] . '</td><td>' . $row["payGet"] . '</td><td>' . $row["status"] . '</td><td>' . $row["end_date"] . '</td><td>' . $row["bday"] . '</td></tr>';
+            . '</td><td>' . $row["email"]. '</td><td>' . $row["join_date"] . '</td><td>' . $row["member_type"] . '</td><td>' . $row["payment"] . '</td><td>' . $row["status"] . '</td><td>' . $row["end_date"] . '</td><td>' . $row["bday"] . '</td></tr>';
     }
     echo '</table>';
 }
