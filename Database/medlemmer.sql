@@ -15,5 +15,6 @@ CREATE TABLE members (
   end_date    DATE            NOT NULL,
   bday        DATE            NOT NULL,
   email       VARCHAR(254)    NOT NULL,
+  payment     VARCHAR(50)     NOT NULL,
   PRIMARY KEY (member_no)
 );
