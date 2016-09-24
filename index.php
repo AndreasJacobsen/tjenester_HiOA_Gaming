@@ -60,6 +60,8 @@
 
 
 <?php
+
+//
 header('Content-Type: text/html; charset=utf-8');
 if (isset($_GET['submit'])) {
     /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor � printe direkte s� navnene ikke fortsetter � st�? */
