@@ -33,7 +33,7 @@
                         oninvalid="setCustomValidity('Only letters A-Z a-z . and spaces, max 50 letters.')"
                         title="LastName" required><br><br>
 
-        E-mail:   <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$z >
+        E-mail:   <input type="email" name="email">
 
         <!--  <p> SiO student? <select required name="student" title="Student">
                   <option value="1">Student</option>
@@ -172,8 +172,8 @@ if (isset($_GET['submit'])) {
 
 
     if ($x === 0) {
-        $sql = "INSERT INTO members (first_name, last_name, birth_date, student, gender, join_date, member_type, status, end_date, bday)
-        VALUES ('$first_name','$last_name','$bday','$student','$gender','$date', '$payment', 'member', '$end_date','$bday')";
+        $sql = "INSERT INTO members (first_name, last_name, birth_date, student, gender, join_date, member_type, status, end_date, bday, email)
+        VALUES ('$first_name','$last_name','$bday','$student','$gender','$date', '$payment', 'member', '$end_date','$bday','$email')";
 
         if (mysqli_query($conn, $sql)) {
             echo "<script type='text/javascript'>
