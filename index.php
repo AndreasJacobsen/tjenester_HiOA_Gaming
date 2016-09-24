@@ -22,28 +22,34 @@
     </div>
 </div>
 <div class="table">
-    <img src="Pic/logo.png" alt="Logo for HiOA Gaming" align="middle" height="200" width="400">
+    <img src="Pic/logo.png" class="logo" alt="Logo for HiOA Gaming">
     <h1>Registration for membership</h1>
 
     <form action="" method="get">
-        <div>Given name: <input type="text" pattern="[A-Za-zÆØÅæøå\`\-\. ]{0,50}"
+        <fieldset class="float">
+        <div class="float-input">
+            Given name: <br><input type="text" pattern="[A-Za-zÆØÅæøå\`\-\. ]{0,50}"
                                 oninvalid="setCustomValidity('Only letters A-Z a-z . and spaces, max 50 letters.')"
-                                name="FirstName" title="FirstName" required><br><br></div>
-        Surname: <input type="text" name="LastName" pattern="[A-Za-zÆØÅæøå'\-\. ]{0,50}"
+                                name="FirstName" title="FirstName" required><br><br>
+            Surname: <br><input type="text" name="LastName" pattern="[A-Za-zÆØÅæøå'\-\. ]{0,50}"
                         oninvalid="setCustomValidity('Only letters A-Z a-z . and spaces, max 50 letters.')"
                         title="LastName" required><br><br>
+        </div>
+        <div class="float">
+            E-mail:   <br><input type="email" name="email">
 
-        E-mail:   <input type="email" name="email">
-
-        <!--  <p> SiO student? <select required name="student" title="Student">
+            <!--  <p> SiO student? <select required name="student" title="Student">
                   <option value="1">Student</option>
                   <option value="0">Not student</option>
               </select>-->
             <br>
-        <p><br>Date of birth:</br> <input type="date" id="datepicker" name="bday" pattern="[(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))
+        <p>Date of birth: <br><input type="date" id="datepicker" name="bday" pattern="[(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))
 ]" max="2010-12-31 min=" 1942-01-01""
             value="1993-03-03" ></p>
-
+        </div>
+        </fieldset>
+        <fieldset class="field">
+         <div class="float">   
         <br>SiO student?<br>
         <input type="radio" name="student" value="1" title="SiO student"> SiO student<br>
         <input type="radio" name="student" value="0" title="SiO student"> Ikke SiO student<br>
@@ -51,14 +57,17 @@
         <br>Payment:<br>
         <input type="radio" name="payment" value="S" title="SemesterMember"> Semester member<br>
         <input type="radio" name="payment" value="Y" title="YearlyMember"> Yearly member<br>
-        <br>Payment method:<br>
+         </div>
+            <div class="float">
+             <br>Payment method:<br>
         <input type="radio" name="payget" value="Vipps" title="YearlyMember"> Vipps<br>
         <input type="radio" name="payget" value="Cash" title="SemesterMember"> Cash<br>
 
         <br>Biological gender: <br>
         <input type="radio" name="gender" value="M" title="Man"> Man<br>
         <input type="radio" name="gender" value="F" title="Woman"> Woman<br>
-
+            </div>
+        </fieldset>
 
         <br><input type="submit" value="Register member" id="submit" class="submit" name="submit" title="submit">
 </div>
