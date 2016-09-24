@@ -7,6 +7,18 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+@media only screen and (max-device-width: 750px) {
+
+    body {
+        margin: 1% 5% 1% 5%;
+        padding: 4%;
+        background: url(Pic/bacground1.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+}
 
 img.logo{
     width: 75%;
