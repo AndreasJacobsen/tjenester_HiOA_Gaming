@@ -11,6 +11,8 @@ CREATE TABLE members (
   gender      ENUM ('M','F')  NOT NULL,
   join_date   DATE            NOT NULL,
   member_type ENUM ('Y','S')  NOT NULL,
-  position    VARCHAR(35)	  NOT NULL,
+  status    VARCHAR(35)	      NOT NULL,
+  end_date DATE               NOT NULL,
+  bday    DATE                NOT NULL,
   PRIMARY KEY (member_no)
 );
