@@ -25,7 +25,8 @@
     <img src="Pic/logo.png" class="logo" alt="Logo for HiOA Gaming">
     <h1>Registration for membership</h1>
 
-    <form action="" method="get">
+    <form action="" method="get" autocomplete="off" >
+
         <fieldset class="float">
         <div class="float-input">
             Given name: <br><input type="text" pattern="[A-Za-zÆØÅæøå\`\-\. ]{0,50}"
