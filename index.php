@@ -25,7 +25,7 @@
     <img src="Pic/logo.png" class="logo" alt="Logo for HiOA Gaming">
     <h1>Registration for membership</h1>
 
-    <form action="" method="get" autocomplete="off" >
+    <form action="" method="POST" autocomplete="off" >
 
         <fieldset class="float">
             <div class="float-input">
@@ -61,8 +61,8 @@
             </div>
             <div class="float">
                 <br>Payment method:<br>
-                <input type="radio" name="payget" value="Vipps" title="YearlyMember"> Vipps<br>
-                <input type="radio" name="payget" value="Cash" title="SemesterMember"> Cash<br>
+                <input type="radio" name="payGet" value="Vipps" title="YearlyMember"> Vipps<br>
+                <input type="radio" name="payGet" value="Cash" title="SemesterMember"> Cash<br>
 
                 <br>Biological sex: <br>
                 <input type="radio" name="gender" value="M" title="Man"> Man<br>
@@ -79,12 +79,12 @@
 
 
 header('Content-Type: text/html; charset=utf-8');
-if (isset($_GET['submit'])) {
+if (isset($_POST['submit'])) {
     /*TODO kanskje sette nye registreringer som JavaScript pop-up boks istedenfor � printe direkte s� navnene ikke fortsetter � st�? */
     $servername = "localhost";
     $username = "root"; //change user and password to a restricted user before production
     $password = "";
-    $dbname = "hioa_gaming"; //change to production name
+    $dbname = ""; //change to production name
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     if ($conn->connect_error) {
@@ -96,21 +96,21 @@ if (isset($_GET['submit'])) {
 
     $x = 0;
 
-    $first_name = test_input($_GET["FirstName"]);
+    $first_name = test_input($_POST["FirstName"]);
     if ($first_name === "") {
         $x++;
         echo '<script type="text/javascript">';
         echo 'alert("Please fill in SURNAME of the member!")';
         echo '</script>';
     }
-    $last_name = test_input($_GET["LastName"]);
+    $last_name = test_input($_POST["LastName"]);
     if ($last_name === "") {
         $x++;
         echo '<script type="text/javascript">';
         echo 'alert("Please fill in LAST NAME of the member!")';
         echo '</script>';
     };
-    $gender = test_input($_GET["gender"]);
+    $gender = test_input($_POST["gender"]);
     if ($gender === "") {
         $x++;
         echo '<script type="text/javascript">';
@@ -118,21 +118,21 @@ if (isset($_GET['submit'])) {
         echo '</script>';
     }
 
-    $student = test_input($_GET["student"]);
+    $student = test_input($_POST["student"]);
     if ($student === "") {
         $x++;
         echo '<script type="text/javascript">';
         echo 'alert("Please select if the member is SiO STUDENT or NOT SiO STUDENT!")';
         echo '</script>';
     }
-    $payment = test_input($_GET["payment"]);
+    $payment = test_input($_POST["payment"]);
     if ($payment === "") {
         $x++;
         echo '<script type="text/javascript">';
         echo 'alert("Please select SEMESTER membership or YEARLY membership!")';
         echo '</script>';
     }
-    $bday = test_birth($_GET['bday']);
+    $bday = test_birth($_POST['bday']);
     if ($bday === "") {
         $x++;
         echo '<script type="text/javascript">';
@@ -140,7 +140,7 @@ if (isset($_GET['submit'])) {
         echo '</script>';
     }
 
-    $email = $_GET['email'];
+    $email = $_POST['email'];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo '<script type="text/javascript">';
         echo 'alert("Please fill inn a valid email!")';
@@ -163,7 +163,7 @@ if (isset($_GET['submit'])) {
     $date = test_date((date('Y-m-d')));
 
 
-    $bday = test_date($_GET['bday']);
+    $bday = test_date($_POST['bday']);
     if ($date > $dateSemester && $payment === "S") {
         $end_date = $dateSemester;
     } elseif ($date < $dateYear && $payment == "Y") {
@@ -183,11 +183,21 @@ if (isset($_GET['submit'])) {
         echo '</script>';
         $x++;
     }
-    $payGet = $_GET['payget'];
+
+    $student = test_input($_POST["student"]);
+
+    $payGet = test_input($_POST["payGet"]);
+    if($payGet === ""){
+        echo '<script type="text/javascript">';
+        echo 'alert("Please fill inn a valid payment!)';
+        echo '</script>';
+        $emailErr = "Invalid email format";
+        $x++;
+    }
 
     if ($x === 0) {
         $sql = "INSERT INTO members (first_name, last_name, birth_date, student, gender, join_date, member_type, status, end_date, bday, payment, email)
-        VALUES ('$first_name','$last_name','$bday','$student','$gender','$date', '$payment', 'member', '$end_date','$bday','$payGet','$email')";
+        VALUES ('$first_name','$last_name','$bday','$student','$gender','$date', '$payment', 'Member', '$end_date','$bday','$payGet','$email')";
 
         if (mysqli_query($conn, $sql)) {
             echo "<script type='text/javascript'>
