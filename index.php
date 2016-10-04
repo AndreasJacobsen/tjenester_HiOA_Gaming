@@ -148,6 +148,9 @@ if (isset($_POST['submit'])) {
         $emailErr = "Invalid email format";
         $x++;
     }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $x++;
+    }
 
     $dateYearStart = date("Y");
     $dateFirst = $dateYearStart . "-01-01";
