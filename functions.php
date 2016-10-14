@@ -24,4 +24,28 @@ function test_birth($data)
     $data = htmlspecialchars($data);
 }
 
+function pdo_connect() {
+    $servername = "localhost";
+    $username = "root"; //change to production user.
+    $password = "";//change to production hashed with salt password.
+    $dbname = "hioa_gaming"; //change to production name.
+
+    try {
+            $conn = new PDO("mysql:host=$servername;
+            dbname=$dbname",
+            $username,
+            $password,
+            array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        echo "Connected successfully";
+    }
+    catch(PDOException $e)
+    {
+        echo "Connection failed: " . $e->getMessage();
+    }
+}
+
 ?>
